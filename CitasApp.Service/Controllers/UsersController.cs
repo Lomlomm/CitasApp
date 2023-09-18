@@ -1,11 +1,13 @@
 using API.entities;
+using CitasApp.Service.Controllers;
 using CitasApp.Service.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore; 
+
 // [ApiController] Anotaciones
 [ApiController]
 [Route("api/[controller]")] // api/users
-public class UsersController: ControllerBase {
+public class UsersController: BaseApiController {
     //patron de estrategia y dependencias, el primero son entidades que viven menos tiempo 
     // que la inyecci'on de dependencias
     private readonly DataContext _context;
