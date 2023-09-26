@@ -1,8 +1,9 @@
-namespace API.entities{
+using System.ComponentModel.DataAnnotations;
+
+namespace CitasApp.Service.Entities{
     public class AppUser{
         public string UserName { get; set;}
         public int Id { get; set; }
-
         public byte[] PasswordHash { get; set; }
 
         public byte[] PasswordSalt { get; set; }

@@ -33,7 +33,7 @@ namespace CitasApp.Service.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 #pragma warning restore 612, 618
         }

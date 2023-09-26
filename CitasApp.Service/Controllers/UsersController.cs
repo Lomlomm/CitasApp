@@ -1,4 +1,4 @@
-using API.entities;
+using CitasApp.Service.Entities;
 using CitasApp.Service.Controllers;
 using CitasApp.Service.Data;
 using Microsoft.AspNetCore.Mvc;

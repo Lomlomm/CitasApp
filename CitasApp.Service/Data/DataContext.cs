@@ -1,4 +1,4 @@
-using API.entities;
+using CitasApp.Service.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CitasApp.Service.Data {
