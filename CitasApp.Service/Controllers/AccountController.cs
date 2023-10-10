@@ -14,9 +14,10 @@ public class AccountController : BaseApiController{
     private readonly DataContext _context;
 
     private const string USER_PASSWORD_ERROR_MESSAGE = "Usuario o contrasenia incorrectos";
-    private readonly TokenService _tokenService;
+    private readonly ITokenService _tokenService;
     public AccountController(DataContext context, ITokenService tokenService){
         _context = context; 
+        _tokenService = tokenService;
     }
 
     [HttpPost("register")]
@@ -72,7 +73,7 @@ public class AccountController : BaseApiController{
         // en que se relacionan entity framework con linq? <-pregunta de entrevista
         // la funcion dentro de los parentesis son delegados: funciones anonimas, funciones no anonimas y funciones lambda
         // Un delegado permite enviar metodos como parametros
-        return await _context.User.AnyAsync(x => x.UserName.Equals(username.ToLower(), StringComparison.OrdinalIgnoreCase)); //validamos que exista el usuario
+        return await _context.User.AnyAsync(x => x.UserName == username.ToLower()); //validamos que exista el usuario
 
     }
 }
