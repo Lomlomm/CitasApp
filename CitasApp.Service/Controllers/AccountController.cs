@@ -57,7 +57,8 @@ public class AccountController : BaseApiController{
 
         var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
 
-        for(int i = 0; i < computedHash.Length; i++){
+        for(int i = 0; i < computedHash.Length; i++)
+        {
             if(computedHash[i] != user.PasswordHash[i]) return Unauthorized(USER_PASSWORD_ERROR_MESSAGE);
         }
 

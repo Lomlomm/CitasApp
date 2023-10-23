@@ -1,4 +1,4 @@
-// una clase estaticaa es cuando no se necesita 3 ninguna extension
+// una clase estatica= es cuando no se necesita 3 ninguna instancia
 
 using CitasApp.Service.Data;
 using Microsoft.EntityFrameworkCore;

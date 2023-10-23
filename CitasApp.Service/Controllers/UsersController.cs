@@ -2,11 +2,12 @@ using CitasApp.Service.Entities;
 using CitasApp.Service.Controllers;
 using CitasApp.Service.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+namespace CitasApp.Service.Controllers;
 
 // [ApiController] Anotaciones
-[ApiController]
-[Route("api/[controller]")] // api/users
+[Authorize]
 public class UsersController: BaseApiController {
     //patron de estrategia y dependencias, el primero son entidades que viven menos tiempo 
     // que la inyecci'on de dependencias
@@ -15,10 +16,13 @@ public class UsersController: BaseApiController {
     {
         _context = context;
     }
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers() {
         return await _context.User.ToListAsync();
     }
+
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<ActionResult<AppUser>> GetUser(int id) {
         return await _context.User.FindAsync(id);

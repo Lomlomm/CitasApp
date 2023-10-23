@@ -1,8 +1,12 @@
+using System.Text;
+using CitasApp.Service;
 using CitasApp.Service.Data;
 using CitasApp.Service.Extensions;
 using CitasApp.Service.Interfaces;
 using CitasApp.Service.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +28,6 @@ builder.Services.AddCors();
 builder.Services.AddScoped<ITokenService, TokenService>(); //esto es una inyección de dependencias
 // la inyección de dependencias sirve para desacoplar la aplicación, mejor su mantenibilidad y hacer más 
 // fáciles las pruebas. Se relaciona con el principio de SOLID de Dependency Inversion Principle 
-
-builder.Services.AddIdentityServices(builder.Configuration); 
 
 var app = builder.Build();
 
@@ -53,6 +55,8 @@ var app = builder.Build();
 //                 ValidateAudience = false
 //             };
 //         });
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors(builder => builder.AllowAnyHeader()
                                 .AllowAnyMethod()
