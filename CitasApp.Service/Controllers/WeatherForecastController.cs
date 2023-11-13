@@ -2,8 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CitasApp.Service.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+
     public class WeatherForecastController : BaseApiController
     {
         private static readonly string[] Summaries = new[]

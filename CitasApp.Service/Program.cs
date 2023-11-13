@@ -1,12 +1,6 @@
-using System.Text;
+
 using CitasApp.Service;
-using CitasApp.Service.Data;
 using CitasApp.Service.Extensions;
-using CitasApp.Service.Interfaces;
-using CitasApp.Service.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,19 +9,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddIdentityServices(builder.Configuration);
 
-builder.Services.AddDbContext<DataContext>(opt => 
-{
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+// builder.Services.AddDbContext<DataContext>(opt => 
+// {
+//     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+// });
 
-builder.Services.AddCors();
-// builder.Services.AddSingleton permite agregar un servicio singleton del tipo especificado en el servicetime 
-// builder.Services.Transcient 
-// por cada inyeccion de ITokenService implementará una clase llamada token service
-builder.Services.AddScoped<ITokenService, TokenService>(); //esto es una inyección de dependencias
-// la inyección de dependencias sirve para desacoplar la aplicación, mejor su mantenibilidad y hacer más 
-// fáciles las pruebas. Se relaciona con el principio de SOLID de Dependency Inversion Principle 
+// builder.Services.AddCors();
+// // builder.Services.AddSingleton permite agregar un servicio singleton del tipo especificado en el servicetime 
+// // builder.Services.Transcient 
+// // por cada inyeccion de ITokenService implementará una clase llamada token service
+// builder.Services.AddScoped<ITokenService, TokenService>(); //esto es una inyección de dependencias
+// // la inyección de dependencias sirve para desacoplar la aplicación, mejor su mantenibilidad y hacer más 
+// // fáciles las pruebas. Se relaciona con el principio de SOLID de Dependency Inversion Principle 
+
 
 var app = builder.Build();
 

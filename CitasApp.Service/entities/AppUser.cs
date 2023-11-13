@@ -3,9 +3,10 @@ using System.ComponentModel.DataAnnotations;
 namespace CitasApp.Service.Entities{
     public class AppUser{
 
-        public string UserName { get; set;}
         public int Id { get; set; }
 
+
+        public string UserName { get; set;}
         
         public byte[] PasswordHash { get; set; }
 
