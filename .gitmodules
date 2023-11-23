@@ -1,3 +1,6 @@
 [submodule "SPAA"]
 	path = SPAA
 	url = https://github.com/Lomlomm/SPAA
+[submodule "SPAAA"]
+	path = SPAAA
+	url = https://github.com/Lomlomm/SPAA
