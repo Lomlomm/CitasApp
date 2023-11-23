@@ -39,6 +39,8 @@ public class BuggyController : BaseApiController
         var thingToReturn = thing.ToString(); 
 
         return thingToReturn;
+
+        
     }
 
     [HttpPost("bad-request")]

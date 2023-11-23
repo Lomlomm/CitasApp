@@ -9,11 +9,11 @@ public class AutoMapperProfiles : Profile {
 
     public AutoMapperProfiles() {
         CreateMap<AppUser, MemberDto>()
-            .ForMember(dest => dest.PhotoUrl, 
-                opt => opt.MapFrom(src => src.Photos.FirstOrDefault(profile_hook_info => p.IsMain).Url));
-            .ForMember(dest => dest.Age, 
-                opt => opt.MapFrom(src => src.DameLaEdad()));
-        CreateMap<PathTooLongException, PhotoDto>();
+        .ForMember(dest => dest.PhotoUrl, 
+            opt => opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url))
+        .ForMember(dest => dest.Age, 
+            opt => opt.MapFrom(src => src.DameLaEdad()));
+        CreateMap<Photo, PhotoDto>();
     }
     
 }
